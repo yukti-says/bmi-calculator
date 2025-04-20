@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-responsive-min.css" integrity="sha384-2j6v4+5g" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container" style="padding: 40px; text-align: center;">
+        <h1>BMI Calculator</h1>
+
+        <form class="pure-form" action="/" method="POST">
+            <label for="weight">Weight (kg):</label>
+            <input type="number" id="weight" name="weight" required><br><br>
+
+            <label for="height">Height (m):</label>
+            <input type="number" step="0.01" id="height" name="height" required><br><br>
+
+            <button class="pure-button pure-button-primary" type="submit">Calculate BMI</button>
+        </form>
+
+        <div class="result">
+            {% if bmi is not none %}
+                <h2>Your BMI: {{ bmi }}</h2>
+                <p>{{ message }}</p>
+            {% elif message %}
+                <p>{{ message }}</p>
+            {% endif %}
+        </div>
+        
+    </div>
+</body>
+</html>
